@@ -6,8 +6,7 @@ Optimized for Google Colab
 
 import argparse
 import torch
-from app.utils.config import Config
-from app.utils.tunnel import TunnelManager
+from app import Config, TunnelManager, create_interface
 
 def check_gpu():
     """Check if GPU is available"""
@@ -59,8 +58,6 @@ def main():
     print("🚀 Launching WebUI...")
     print(f"Local URL: http://localhost:{args.port}")
     print()
-    
-    from app.ui.gradio_interface import create_interface
     
     demo = create_interface(config)
     demo.queue(max_size=20)
